@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+
+sourceCompatibility = '1.8'
+compileJava.options.encoding = 'UTF-8'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+
+repositories {
+    jcenter()
+}
+
+eclipse {
+	wtp {
+	}
+}
+
+dependencies {
+	// DB
+	providedCompile 'org.hibernate:hibernate-entitymanager:5.0.7.Final'
+	compile 'org.postgresql:postgresql:9.4-1201-jdbc41'
+    
+	// Libs
+	providedCompile 'org.jboss.resteasy:resteasy-jaxrs:3.0.11.Final'
+	providedCompile 'javax:javaee-api:7.0'
+}
+
+test {
+	systemProperties 'file.encoding': 'UTF-8'
+	ignoreFailures true
+    exclude '**/AllTests*'
+    sourceSets.main.output.resourcesDir = sourceSets.main.output.classesDir
+}
