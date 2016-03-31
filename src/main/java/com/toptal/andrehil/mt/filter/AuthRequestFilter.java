@@ -2,9 +2,7 @@ package com.toptal.andrehil.mt.filter;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -26,8 +24,6 @@ public class AuthRequestFilter implements ContainerRequestFilter {
 
     @PersistenceUnit(unitName = "pu")
     private EntityManagerFactory entityManagerFactory;
-    @PersistenceContext(unitName = "pu", name = "persistence/pu")
-    protected EntityManager em;
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {

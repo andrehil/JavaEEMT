@@ -17,7 +17,7 @@ import org.hibernate.service.spi.ServiceRegistryImplementor;
  * Responsible for changing the schema before database interactions.
  * <br>
  * <br>
- * Documentação do Hibernate: {@link see http://docs.jboss.org/hibernate/orm/4.3/devguide/en-US/html_single/#d5e4771}
+ * Hibernate doc: {@link see http://docs.jboss.org/hibernate/orm/4.3/devguide/en-US/html_single/#d5e4771}
  *
  * @author André Hildinger
  *
@@ -37,9 +37,9 @@ public class MultiTenantProvider implements MultiTenantConnectionProvider, Servi
     public void injectServices(ServiceRegistryImplementor serviceRegistry) {
         try {
             final Context init = new InitialContext();
-            dataSource = (DataSource) init.lookup("java:/AmbersDS");
+            dataSource = (DataSource) init.lookup("java:/JavaEEMTDS");
         } catch (final NamingException e) {
-            throw new RuntimeException("Não foi possível encontrar AmbersDS");
+            throw new RuntimeException(e);
         }
     }
 
